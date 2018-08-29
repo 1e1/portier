@@ -1,0 +1,118 @@
+html, 
+body,
+article {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+html,
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #EEE;
+}
+
+section {
+    margin: 4px;
+    position: absolute;
+}
+
+section.traffic {
+    top: 36px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+section.traffic img {
+    max-width: 100%;
+    height: auto;
+}
+
+section.weather {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 36px;
+}
+
+section.weather > div {
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+section.weather li:first-of-type .temperature {
+    font-weight: bold;
+}
+
+section.transport {
+    width: 230px;
+    right: 0;
+    top: 40px;
+}
+
+section.transport * {
+    display: block;
+    background-color: #333;
+    color: #DD3;
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: right;
+}
+
+section.transport label {
+    text-align: left;
+}
+
+section.transport div + div {
+    border-top: 1px solid #DD3;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    text-align: center;
+}
+
+li .temperature {
+    margin: 0 1em;
+}
+
+ul,
+.flex {
+    display: flex;
+    padding: 0;
+    flex-wrap: nowrap;
+    align-content: stretch;
+}
+
+li,
+.flex > rain {
+    flex-grow: 1;
+    display: block;
+    height: 1em;
+}
+
+rain + span {
+    opacity: 0.3;
+    margin: 0 4px;
+}
+
+fieldset {
+    border: 2px solid #AAA;
+    width: 200px;
+    overflow-x: hidden;
+}
+
+legend,
+li,
+.flex > rain {
+    border-radius: 4px;
+}
