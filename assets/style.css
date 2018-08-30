@@ -54,6 +54,15 @@ section.transport {
     overflow-y: auto;
 }
 
+section.news {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 section.right {
     right: 0;
 }
@@ -90,6 +99,17 @@ section.transport div + div {
 section.transport .code {
     font-weight: bold;
     margin-right: 4px;
+}
+
+section.news li {
+    display: none;
+    text-shadow: #333 0 0 8px, #000 0 0 1px;
+    color: #EEE;
+    padding: 2px;
+}
+
+section.news li:first-child {
+    display: inline;
 }
 
 ul {
@@ -146,6 +166,7 @@ legend {
 
 img,
 li,
+section.news li,
 .flex > rain {
     border-radius: 4px;
 }

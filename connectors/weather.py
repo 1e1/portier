@@ -2,7 +2,6 @@
 import sys
 import os
 import requests
-import json
 from lxml import etree
 from lxml.builder import E
 

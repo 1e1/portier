@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 import sys
 import os
-import requests
 from lxml import etree
 from lxml.builder import E
 
 
-url_pattern = 'https://www.google.com/search?q=traffic+{city}'
-xpath_expression = '//*[@data-connector="traffic-google"]'
+xpath_expression = '//*[@data-connector="rss"]'
 
 
 pretty_print = True
@@ -26,26 +24,24 @@ if ns.keys() and None in ns:
 #   end of hack    
 
 for e in tree.xpath(xpath_expression, namespaces=ns):
-    city = e.get('data-city')
-    url = url_pattern.replace('{city}', city)
+    url = e.get('data-url')
+    ul = E.ul()
     
     print(url)
-    r = requests.get(url, headers={'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:61.0) Gecko/20100101 Firefox/61.0'})
-    response = r.text
+    rtree = etree.parse(url)
+    items = rtree.xpath('//item', namespaces=ns)
 
-    rtree = etree.HTML(response)
-    imgs = rtree.xpath('//img[starts-with(@src,"/maps")][1]', namespaces=ns)
-    
-    if (len(imgs)):
-        for child in e:
-            e.remove(child)
-    
-        img = imgs[0]
-        src = img.get('src')
+    for child in e:
+        e.remove(child)
 
-        img = E.img(src=f'https://www.google.com/{src}')
+    for item in items:
+        title = item.find('./title').text
+        li = E.li(
+            title
+        )
+        ul.append(li)
 
-        e.append(img)
+    e.append(ul)
 
 
 xml_bytes = etree.tostring(tree, xml_declaration=False, method='xml', encoding='UTF-8', pretty_print=pretty_print)
