@@ -41,5 +41,5 @@ window.addEventListener('load', function(ev) {
 
     window.setInterval(function() {
         selfReload(url);
-    }, 20000);
+    }, 10000);
 });

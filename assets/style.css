@@ -164,6 +164,11 @@ legend {
     overflow: hidden;
 }
 
+legend {
+    color: #000;
+    border-radius: 1px;
+}
+
 img,
 li,
 section.news li,
