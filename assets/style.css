@@ -80,8 +80,6 @@ section.transport fieldset {
     text-overflow: ellipsis;
     white-space: nowrap;
     text-align: left;
-    margin: 0;
-    padding: 8px;
 }
 
 section.transport output {
@@ -150,6 +148,8 @@ fieldset {
     border: 2px solid #AAA;
     overflow-x: hidden;
     width: 200px;
+    margin: 0;
+    padding: 8px;
 }
 
 fieldset div[data-connector] {
@@ -174,4 +174,32 @@ li,
 section.news li,
 .flex > rain {
     border-radius: 4px;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    section.transport {
+        width: 110px;
+        font-size: 9px;
+    }
+    
+    fieldset {
+        width: 100px;
+        border: 1px;
+        padding: 2px;
+    }
+
+    section.transport output {
+        right: 8px;
+    }
+
+    fieldset div[data-connector] {
+        width: 100px;
+    }
+
+    fieldset label,
+    legend {
+        max-width: 90px;
+    }
 }
