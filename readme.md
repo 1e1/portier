@@ -1,3 +1,14 @@
+# Home dashboard
+
+## installation
+
+`pip install -r requirements.txt`
+`./update.sh`
+open `index.html`
+
+
+## doc
+
 ### sources
 
 - pluie

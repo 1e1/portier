@@ -47,12 +47,22 @@ section.weather li:first-of-type .temperature {
 }
 
 section.transport {
-    width: 230px;
-    right: 0;
+    width: 220px;
     top: 40px;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
-section.transport * {
+section.right {
+    right: 0;
+}
+
+section.left {
+    left: 0;
+}
+
+section.transport fieldset {
     display: block;
     background-color: #333;
     color: #DD3;
@@ -60,15 +70,26 @@ section.transport * {
     text-transform: uppercase;
     text-overflow: ellipsis;
     white-space: nowrap;
-    text-align: right;
+    text-align: left;
+    margin: 0;
+    padding: 8px;
 }
 
-section.transport label {
-    text-align: left;
+section.transport output {
+    right: 8px;
+    text-align: right;
+    position: absolute;
+    padding: 0 2px 0 1em;
+    background-color: #333;
 }
 
 section.transport div + div {
     border-top: 1px solid #DD3;
+}
+
+section.transport .code {
+    font-weight: bold;
+    margin-right: 4px;
 }
 
 ul {
@@ -107,11 +128,23 @@ rain + span {
 
 fieldset {
     border: 2px solid #AAA;
-    width: 200px;
     overflow-x: hidden;
+    width: 200px;
 }
 
-legend,
+fieldset div[data-connector] {
+    width: 200px;
+    overflow: hidden;
+}
+
+fieldset label,
+legend {
+    max-width: 180px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+img,
 li,
 .flex > rain {
     border-radius: 4px;

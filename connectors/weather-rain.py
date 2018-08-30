@@ -6,11 +6,13 @@ import json
 from lxml import etree
 
 
-pretty_print = True
-path = os.path.dirname(os.path.abspath(__file__)) + '/../index.html'
 url_pattern = 'https://www.meteofrance.com/mf3-rpc-portlet/rest/pluie/{id}'
 xpath_expression = '//*[@data-connector="weather-rain"]'
 
+
+pretty_print = True
+path_default = os.path.dirname(os.path.abspath(__file__)) + '/../index.html'
+path = sys.argv[1] if 2==len(sys.argv) else path_default
 
 tree = etree.parse(path)
 
@@ -33,8 +35,8 @@ for e in tree.xpath(xpath_expression, namespaces=ns):
 
     data = json.loads(response)
 
-    for index, dataCadran in enumerate(data['dataCadran']):
-        color = dataCadran['color']
+    for index, dataCadran in enumerate(data.get('dataCadran')):
+        color = dataCadran.get('color')
         #print(index +1, dataCadran)
         rain = e.xpath(f"//rain[position()={index +1}]", namespaces=ns)
         rain[0].set("style", f"background-color:#{color}")

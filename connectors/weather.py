@@ -7,11 +7,13 @@ from lxml import etree
 from lxml.builder import E
 
 
-pretty_print = True
-path = os.path.dirname(os.path.abspath(__file__)) + '/../index.html'
 url_pattern = 'https://www.meteofrance.com/previsions-meteo-france/{city}/{zip_code}'
 xpath_expression = '//*[@data-connector="weather"]'
 
+
+pretty_print = True
+path_default = os.path.dirname(os.path.abspath(__file__)) + '/../index.html'
+path = sys.argv[1] if 2==len(sys.argv) else path_default
 
 tree = etree.parse(path)
 
@@ -25,9 +27,6 @@ if ns.keys() and None in ns:
 #   end of hack    
 
 for e in tree.xpath(xpath_expression, namespaces=ns):
-    for child in e:
-        e.remove(child)
-    
     city = e.get('data-city')
     url = url_pattern.replace('{city}', city)
     zip_code = e.get('data-zip_code')
@@ -40,7 +39,10 @@ for e in tree.xpath(xpath_expression, namespaces=ns):
     rtree = etree.HTML(response)
     parts = rtree.xpath('//ul[contains(@class,"prevision-horaire")][1]/li', namespaces=ns)
     ul = E.ul()
-
+    
+    for child in e:
+        e.remove(child)
+    
     for part in parts:
         times = part.xpath('.//time[@datetime]')
         temperatures = part.xpath('.//li[contains(@class,"day-summary-temperature")]')

@@ -7,11 +7,13 @@ from lxml import etree
 from lxml.builder import E
 
 
-pretty_print = True
-path = os.path.dirname(os.path.abspath(__file__)) + '/../index.html'
 url_pattern = 'https://www.google.com/search?q=traffic+{city}'
 xpath_expression = '//*[@data-connector="traffic-google"]'
 
+
+pretty_print = True
+path_default = os.path.dirname(os.path.abspath(__file__)) + '/../index.html'
+path = sys.argv[1] if 2==len(sys.argv) else path_default
 
 tree = etree.parse(path)
 
@@ -25,9 +27,6 @@ if ns.keys() and None in ns:
 #   end of hack    
 
 for e in tree.xpath(xpath_expression, namespaces=ns):
-    for child in e:
-        e.remove(child)
-    
     city = e.get('data-city')
     url = url_pattern.replace('{city}', city)
     
@@ -39,6 +38,9 @@ for e in tree.xpath(xpath_expression, namespaces=ns):
     imgs = rtree.xpath('//img[starts-with(@src,"/maps")][1]', namespaces=ns)
     
     if (len(imgs)):
+        for child in e:
+            e.remove(child)
+    
         img = imgs[0]
         src = img.get('src')
 

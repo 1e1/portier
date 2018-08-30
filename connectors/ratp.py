@@ -7,11 +7,14 @@ from lxml import etree
 from lxml.builder import E
 
 
-pretty_print = True
-path = os.path.dirname(os.path.abspath(__file__)) + '/../index.html'
 url_pattern = 'https://api.vianavigo.com/lines/{line}/stops/{stop}/realTime'
+url_to_pattern = 'https://api.vianavigo.com/lines/{line}/stops/{stop}/to/{to}/realTime'
 xpath_expression = '//*[@data-connector="ratp"]'
 
+
+pretty_print = True
+path_default = os.path.dirname(os.path.abspath(__file__)) + '/../index.html'
+path = sys.argv[1] if 2==len(sys.argv) else path_default
 
 tree = etree.parse(path)
 
@@ -25,13 +28,17 @@ if ns.keys() and None in ns:
 #   end of hack    
 
 for e in tree.xpath(xpath_expression, namespaces=ns):
-    for child in e:
-        e.remove(child)
-    
     line = e.get('data-line')
-    url = url_pattern.replace('{line}', line)
     stop = e.get('data-stop')
+    to = e.get('data-to')
+
+    url = url_pattern if None == to else url_to_pattern
+
+    url = url.replace('{line}', line)
     url = url.replace('{stop}', stop)
+
+    if None != to:
+        url = url.replace('{to}', to)
     
     print(url)
     r = requests.get(url, headers={'X-Host-Override': 'vgo-api'})
@@ -39,27 +46,29 @@ for e in tree.xpath(xpath_expression, namespaces=ns):
 
     data = json.loads(response)
 
-    for schedule in data:
-        #print(schedule)
-        if 'err_code' == schedule:
-            div = E.div(
-                E.div('fin de service')
-            )
-            e.append(div)
-        else:
-            lineDirection = schedule['lineDirection']
-            code = schedule['code']
+    if type(data) is dict:
+        error = data.get('err_code', 0)
+        print(error)
+    else:
+        for child in e:
+            e.remove(child)
+
+        for schedule in data:
+            #print(schedule)
+            lineDirection = schedule.get('lineDirection', 'Sans arrêt')
+            code = schedule.get('code')
 
             if 'message' == code:
-                message = schedule['schedule']
-                div = E.div(
-                    E.label(lineDirection),
-                    E.div(message),
-                    {"class": "important"}
-                )
-                e.append(div)
+                message = schedule.get('schedule')
+                if 'Sans arrêt' != message:
+                    div = E.div(
+                        E.label(lineDirection),
+                        E.div(message),
+                        {"class": "important"}
+                    )
+                    e.append(div)
             elif 'duration' == code:
-                time = schedule['time']
+                time = schedule.get('time', '?')
                 div = E.div(
                     E.label(lineDirection),
                     E.output(time)
