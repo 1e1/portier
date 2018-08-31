@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>portier</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="icon" href="data:image/gif;base64,R0lGODlhEAAQAKIAAAAAALS/smStU1x4KwAAAAAAAAAAAAAAACH5BAkAAAQALAAAAAAQABAAAAM8SLMr43AQxdq7rtYYNQsDKDJCWQZAqgJB6a0qaQoozLqaDchmDbeZio530gE9o5HHwlkyMU5oR6JpZggJADs="/>
+        <link rel="stylesheet" href="./../assets/style.css"/>
+        <script type="text/javascript" src="./../assets/refresh.js" async="async" defer="defer"><!-- force --></script>
+        <style type="text/css">
+            .T2 legend {
+                color: #fff;
+                background-color:#bb4b9b;
+                border-radius: 1em;
+            }
+            .B93 legend {
+                background-color:#79bb92;
+            }
+            .B144 legend {
+                background-color:#c5a3ca;
+            }
+        </style>
+    </head>
+    <body>
+        <article>
+        <section class="traffic">
+            <div data-connector="traffic-google" data-city="suresnes">
+            <img src="https://www.google.com//maps/vt/data=Y5Zo0mJL9gy5hDMfXi5APzGT0m9yejJggSbi39JiPbJJdGiZiYQbKHvIEh_y2RgVBxXasc7lQNriMsf-2rAKzlb2m1lrLfP3GE1IYP4_smztbVLVuo11CIs7J7CxEfkbO-LW1X5aLxe5a03auOPyE5lZN_VI-udhNUw23R3Vg2-vuZmabwFJMq-aanjod4EF4Q"/></div>
+        </section>
+        <section class="weather" data-refresh="auto">
+            <div data-connector="weather-rain" data-param="920730">
+                <div class="flex">
+                    <rain style="background-color:#ffffff"> </rain>
+                    <rain style="background-color:#ffffff"> </rain>
+                    <rain style="background-color:#ffffff"> </rain>
+                    <span>15</span>
+                    <rain style="background-color:#ffffff"> </rain>
+                    <rain style="background-color:#ffffff"> </rain>
+                    <rain style="background-color:#ffffff"> </rain>
+                    <span>30</span>
+                    <rain style="background-color:#ffffff"> </rain>
+                    <rain style="background-color:#ffffff"> </rain>
+                    <rain style="background-color:#ffffff"> </rain>
+                    <span>45</span>
+                    <rain style="background-color:#ffffff"> </rain>
+                    <rain style="background-color:#ffffff"> </rain>
+                    <rain style="background-color:#ffffff"> </rain>
+                </div>
+            </div>
+            <div data-connector="weather" data-city="suresnes" data-zip_code="92150">
+            <ul><li><time datetime="14h">14h</time><span class="temperature">21°C</span></li><li><time datetime="17h">17h</time><span class="temperature">21°C</span></li><li><time datetime="20h">20h</time><span class="temperature">20°C</span></li><li><time datetime="23h">23h</time><span class="temperature">16°C</span></li><li><time datetime="2h">2h</time><span class="temperature">13°C</span></li><li><time datetime="5h">5h</time><span class="temperature">11°C</span></li><li><time datetime="8h">8h</time><span class="temperature">11°C</span></li><li><time datetime="11h">11h</time><span class="temperature">19°C</span></li><li><time datetime="14h">14h</time><span class="temperature"></span></li></ul></div>
+        </section>
+        <section class="transport left">
+            <fieldset class="B93">
+                <legend>
+                    <span class="code">93</span>
+                    <span class="stop">Berty Albrecht</span>
+                </legend>
+                <div data-connector="ratp" data-line="100100093:93" data-stop="59049">
+                    </div>
+            </fieldset>
+            <fieldset class="B93">
+                <legend>
+                    <span class="code">93</span>
+                    <span class="stop">Mairie</span>
+                </legend>
+                <div data-connector="ratp" data-line="100100093:93" data-stop="8738237">
+                    <div><label>Pont de Neuilly</label><output>8</output></div><div><label>Pont de Neuilly</label><output>23</output></div></div>
+            </fieldset>
+        </section>
+        <section class="transport right">
+            <fieldset class="T2">
+                <legend>
+                    <span class="code">T2</span>
+                    <span class="stop">Belvédère</span>
+                </legend>
+                <div data-connector="ratp" data-line="100112012:T2" data-stop="59049">
+                    <div><label>Porte de Versailles</label><output>3</output></div><div><label>Pont de Bezons</label><output>8</output></div><div><label>Porte de Versailles</label><output>11</output></div><div><label>Pont de Bezons</label><output>16</output></div></div>
+            </fieldset>
+            <fieldset class="B93">
+                <legend>
+                    <span class="code">93</span>
+                    <span class="stop">Pompidou</span>
+                </legend>
+                <div data-connector="ratp" data-line="100100093:93" data-stop="59:4015788">
+                    <div class="important"><label>Invalides RER</label><div>A l'approche</div></div><div><label>Suresnes-De Gaulle</label><output>6</output></div><div><label>Invalides RER</label><output>16</output></div><div><label>Suresnes-De Gaulle</label><output>21</output></div></div>
+            </fieldset>
+            <fieldset class="B144">
+                <legend>
+                    <span class="code">144</span>
+                    <span class="stop">Pompidou</span>
+                </legend>
+                <div data-connector="ratp" data-line="100100144:144" data-stop="59:4015788">
+                    <div><label>La Defense</label><output>1</output></div><div><label>La Defense</label><output>8</output></div><div><label>Rueil-Malmaison RER</label><output>11</output></div><div><label>Rueil-Malmaison RER</label><output>20</output></div></div>
+            </fieldset>
+        </section>
+        <section class="news">
+            <div data-connector="rss" data-url="http://www.lefigaro.fr/rss/figaro_flash-actu.xml">
+            <ul><li>Cambodge: six ans de prison pour un cinéaste australien</li><li>Grèce: l'Onu s'inquiète de la situation des migrants</li><li>Ligue Europa : le tirage complet de l'OM, Rennes et Bordeaux</li><li>Tanzanie: un élève meurt par châtiment corporel</li><li>Tunisie: le ministre de l'Energie limogé</li><li>Ligue Europa : Antoine Griezmann élu meilleur joueur</li><li>Poutine rencontrera Erdogan en marge du sommet à Téhéran</li><li>Deux blessés lors d'une attaque au couteau à la gare d'Amsterdam</li><li>Merkel et Macron se rencontreront le 7 septembre en France</li><li>Paris: un homme menace de se faire sauter</li><li>Le gouvernement sera «au complet» mardi (Griveaux)</li><li>Syrie: Poutine sera bien au sommet Moscou-Téhéran-Ankara</li><li>Saint-Jacques: Travert veut un accord</li><li>SNCF: la CGT propose de se mobiliser le 18 septembre</li><li>Il est 12h, l'essentiel du vendredi 31 août</li><li>Turquie: bientôt un système antimissiles pour Erdogan</li><li>Pologne: une émission de téléréalité propose de vivre la vie de migrants</li><li>Rentrée: Macron sera en Mayenne lundi</li><li>Barrage rompu en Birmanie: quatre morts</li><li>La députée Emmanuelle Ménard prône une «union des droites»</li></ul></div>
+        </section>
+        </article>
+    </body>
+</html>
+
