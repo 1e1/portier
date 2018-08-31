@@ -1,0 +1,15 @@
+server {
+	listen 80 default_server so_keepalive=off;
+	listen [::]:80 default_server so_keepalive=off;
+
+	root /var/www/ramdisk/around_home;
+	index index.html;
+	access_log  off;
+	error_log off;
+
+	server_name _;
+
+	location / {
+		try_files $uri $uri/ /index.html =404;
+	}
+}

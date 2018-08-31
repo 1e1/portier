@@ -1,18 +1,4 @@
-#!/bin/bash
-
-# for using `service start portier`
-# cat /lib/systemd/system/portier.service
-#[Unit]
-#Description=Portier
-#After=multi-user.target
-#
-#[Service]
-#Type=simple
-#ExecStart=/home/pi/portier/misc/service.sh
-#Restart=on-abort
-#
-#[Install]
-#WantedBy=multi-user.target
+#!/bin/bash -x
 
 WWW=/var/www/ramdisk/around_home
 BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )
