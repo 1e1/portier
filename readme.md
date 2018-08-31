@@ -1,95 +1,39 @@
 # Home dashboard
 
+last seen screen before entering in the real word
+
+
 ## installation
 
-`pip install -r requirements.txt`
-`./update.sh`
-open `index.html`
-
-
-## doc
-
-### sources
-
-- pluie
-`curl -X GET http://www.meteofrance.com/mf3-rpc-portlet/rest/pluie/{idLieu}`
+```bash
+pip install -r requirements.txt
+./update.sh
 ```
-{
-  "idLieu" : "123",
-  "echeance" : "201808291150",
-  "lastUpdate" : "11h35",
-  "isAvailable" : true,
-  "hasData" : true,
-  "niveauPluieText" : [ "De11h50 à 12h50 : Pas de précipitations" ],
-  "dataCadran" : [ {
-    "niveauPluieText" : "Pas de précipitations",
-    "niveauPluie" : 1,
-    "color" : "ffffff"
-  }, {
-    "niveauPluieText" : "Pas de précipitations",
-    "niveauPluie" : 1,
-    "color" : "ffffff"
-  }, {
-    "niveauPluieText" : "Pas de précipitations",
-    "niveauPluie" : 1,
-    "color" : "ffffff"
-  }, {
-    "niveauPluieText" : "Pas de précipitations",
-    "niveauPluie" : 1,
-    "color" : "ffffff"
-  }, {
-    "niveauPluieText" : "Pas de précipitations",
-    "niveauPluie" : 1,
-    "color" : "ffffff"
-  }, {
-    "niveauPluieText" : "Pas de précipitations",
-    "niveauPluie" : 1,
-    "color" : "ffffff"
-  }, {
-    "niveauPluieText" : "Pas de précipitations",
-    "niveauPluie" : 1,
-    "color" : "ffffff"
-  }, {
-    "niveauPluieText" : "Pas de précipitations",
-    "niveauPluie" : 1,
-    "color" : "ffffff"
-  }, {
-    "niveauPluieText" : "Pas de précipitations",
-    "niveauPluie" : 1,
-    "color" : "ffffff"
-  }, {
-    "niveauPluieText" : "Pas de précipitations",
-    "niveauPluie" : 1,
-    "color" : "ffffff"
-  }, {
-    "niveauPluieText" : "Pas de précipitations",
-    "niveauPluie" : 1,
-    "color" : "ffffff"
-  }, {
-    "niveauPluieText" : "Pas de précipitations",
-    "niveauPluie" : 1,
-    "color" : "ffffff"
-  } ]
-}
-```
+open `./www/index.html`
 
-- ratp
-`curl -X GET 'https://api.vianavigo.com/lines/123/stops/123/realTime' -H 'X-Host-Override: vgo-api'`
-```
-[
-  {
-    "lineId": "123",
-    "lineDirection": "Tour Eiffel",
-    "code": "duration",
-    "time": "1"
-  },
-  {
-    "lineId": "123",
-    "lineDirection": "Arc de Triomphe",
-    "code": "duration",
-    "time": "9"
-  }
-]
-```
+optional options for `./update.sh`:
+
+- `-s` or `--no-index`: do not generate index file
+- `-d` or `--daemon`: endless loop
+- `--sleep=123`: sleep `123`s between steps of the endless loop
+- `--index=/path/to/index.html`(default=`./www/index.html`): index file
+- `--dir=/path/to/directory` or `--dir=/path/to/page.html` (default is `./www/pages`): xhtml pages to parse
 
 
+## tips: use a RAM disk
+
+```bash
+mkdir /var/www/ramdisk
+sudo nano /etc/fstab
+```
+add
+```
+tmpfs /var/www/ramdisk tmpfs nodev,nosuid,size=1M 0 0
+```
+```bash
+sudo mount -a
+df
+```
+check the new volume
+
+source: [domoticz](https://www.domoticz.com/wiki/Setting_up_a_RAM_drive_on_Raspberry_Pi)
