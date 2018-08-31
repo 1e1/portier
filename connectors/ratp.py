@@ -11,6 +11,7 @@ from operator import itemgetter
 url_pattern = 'https://api.vianavigo.com/lines/{line}/stops/{stop}/realTime'
 url_to_pattern = 'https://api.vianavigo.com/lines/{line}/stops/{stop}/to/{to}/realTime'
 xpath_expression = '//*[@data-connector="ratp"]'
+failures_max = 5
 
 
 pretty_print = True
@@ -32,6 +33,7 @@ for e in tree.xpath(xpath_expression, namespaces=ns):
     line = e.get('data-line')
     stop = e.get('data-stop')
     to = e.get('data-to')
+    failures = int(e.get('data-failures', '0'))
 
     url = url_pattern if None == to else url_to_pattern
 
@@ -50,6 +52,14 @@ for e in tree.xpath(xpath_expression, namespaces=ns):
     if type(data) is dict:
         error = data.get('err_code', 0)
         print(error)
+
+        failures = 1 + failures
+        if failures > failures_max:
+            for child in e:
+                e.remove(child)
+            
+        e.set('data-failures', str(failures))
+
     else:
         for d in data:
             way = d.get('sens', 0)
@@ -82,6 +92,9 @@ for e in tree.xpath(xpath_expression, namespaces=ns):
                     E.output(time)
                 )
                 e.append(div)
+
+        if 'data-failures' in e.attrib:
+            del e.attrib['data-failures']
 
 
 xml_bytes = etree.tostring(tree, xml_declaration=False, method='xml', encoding='UTF-8', pretty_print=pretty_print)
