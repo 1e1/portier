@@ -99,6 +99,20 @@ section.transport .code {
     margin-right: 4px;
 }
 
+section.transport .important {
+    background-color: #DD3;
+    color: #333;
+    text-align: center;
+}
+/*
+section.transport .important {
+    text-align: right;
+}
+*/
+section.transport .important label {
+    display: none;
+}
+
 section.news li {
     display: none;
     text-shadow: #333 0 0 8px, #000 0 0 1px;
@@ -186,6 +200,7 @@ legend {
 legend {
     color: #000;
     border-radius: 1px;
+    padding: 0 4px;
 }
 
 img,
@@ -220,5 +235,13 @@ section.news li,
     fieldset label,
     legend {
         max-width: 90px;
+    }
+
+    legend {
+        padding: 0 2px;
+    }
+
+    output {
+        text-shadow: #000 0 0 1px;
     }
 }
