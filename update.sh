@@ -6,8 +6,9 @@ INDEX=True
 DAEMON=False
 SLEEP=15
 BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )
-INDEX_PATH="$BASE_DIR/index.html"
-DIR_PATH="$BASE_DIR/pages"
+WWW_DIR="$BASE_DIR/www"
+INDEX_PATH="$WWW_DIR/index.html"
+DIR_PATH="$WWW_DIR/pages"
 FILES=()
 HTML=()
 LINKS=()
@@ -41,7 +42,7 @@ if [ -f "$DIR_PATH" ]
 then
   FILES=($DIR_PATH)
 else
-  FILES="$DIR_PATH/*"
+  FILES="$DIR_PATH/*.html"
 fi
 
 
@@ -63,7 +64,8 @@ z()
 
 x()
 {
-  for c in ./connectors/*; do
+  for c in "$BASE_DIR/connectors/*"
+  do
     echo "RUN $c"
 
     for f in $FILES
@@ -78,7 +80,8 @@ x()
 
 xx()
 {
-  while true; do
+  while true
+  do
     x
     z $SLEEP
   done
@@ -86,9 +89,10 @@ xx()
 
 
 echo 'links:'
+INDEX_DIR=$(dirname $INDEX_PATH)
 for f in $FILES
 do
-  LINK=$(realpath --relative-to="$BASE_DIR" "$f")
+  LINK=$(realpath --relative-to="$INDEX_DIR" "$f")
   LINKS+=($LINK)
   echo "- $LINK"
 done
@@ -96,24 +100,32 @@ echo
 
 HTML+=('<html>')
 HTML+=('<head>')
-HTML+=('<link rel="stylesheet" href="./assets/style.css"/>')
-for l in ${LINKS[*]}
-do
-  HTML+=("<link rel="preload" href='$l'/>")
-  HTML+=("<link rel="prerender" href='$l'/>")
-done
+if [ ${#LINKS[@]} -gt 1 ]
+then
+  HTML+=('<link rel="stylesheet" href="./assets/style.css"/>')
+  for l in ${LINKS[@]}
+  do
+    HTML+=("<link rel="preload" href='$l'/>")
+    HTML+=("<link rel="prerender" href='$l'/>")
+  done
+else
+  HTML+=("<meta http-equiv='refresh' content='0;URL=${LINK[0]}' />")
+fi
 HTML+=('</head>')
-HTML+=('<body>')
-HTML+=('<section class="index flex">')
-for l in ${LINKS[*]}
-do
-  HTML+=("<a href='$l'>$l</a>")
-done
-HTML+=('</section>')
-HTML+=('<section class="news"><ul><li>')
-HTML+=($(date "+%Y-%m-%d %X"))
-HTML+=('</li></ul></section>')
-HTML+=('</body>')
+if [ ${#LINKS[@]} -gt 1 ]
+then
+  HTML+=('<body>')
+  HTML+=('<section class="index flex">')
+  for l in ${LINKS[*]}
+  do
+    HTML+=("<a href='$l'>$l</a>")
+  done
+  HTML+=('</section>')
+  HTML+=('<section class="news"><ul><li>')
+  HTML+=($(date "+%Y-%m-%d %X"))
+  HTML+=('</li></ul></section>')
+  HTML+=('</body>')
+fi
 HTML+=('</html>')
 
 
