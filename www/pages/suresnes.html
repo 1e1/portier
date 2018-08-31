@@ -12,6 +12,10 @@
                 color: #fff;
                 background-color:#bb4b9b;
             }
+            .ASSURE legend {
+                color: #fff;
+                background-color:#aaaaaa;
+            }
             .B93 legend {
                 background-color:#79bb92;
             }
@@ -24,48 +28,58 @@
         <article>
         <section class="traffic">
             <div data-connector="traffic-google" data-city="suresnes">
-            <img src="https://www.google.com//maps/vt/data=Y5Zo0mJL9gy5hDMfXi5APzGT0m9yejJggSbi39JiPbJJdGiZiYQbKHvIEh_y2RgVBxXasc7lQNriMsf-2rAKzlb2m1lrLfP3GE1IYP4_smztbVLVuo11CIs7J7CxEfkbO-LW1X5aLxe5a03auOPyE5lZN_VI-udhNUw23R3Vg2-vuZmabwFJMq-aanjod4EF4Q"/></div>
+            </div>
         </section>
         <section class="weather" data-refresh="auto">
             <div data-connector="weather-rain" data-param="920730">
                 <div class="flex">
-                    <rain style="background-color:#ffffff"> </rain>
-                    <rain style="background-color:#ffffff"> </rain>
-                    <rain style="background-color:#ffffff"> </rain>
+                    <rain> </rain>
+                    <rain> </rain>
+                    <rain> </rain>
                     <span>15</span>
-                    <rain style="background-color:#ffffff"> </rain>
-                    <rain style="background-color:#ffffff"> </rain>
-                    <rain style="background-color:#ffffff"> </rain>
+                    <rain> </rain>
+                    <rain> </rain>
+                    <rain> </rain>
                     <span>30</span>
-                    <rain style="background-color:#ffffff"> </rain>
-                    <rain style="background-color:#ffffff"> </rain>
-                    <rain style="background-color:#ffffff"> </rain>
+                    <rain> </rain>
+                    <rain> </rain>
+                    <rain> </rain>
                     <span>45</span>
-                    <rain style="background-color:#ffffff"> </rain>
-                    <rain style="background-color:#ffffff"> </rain>
-                    <rain style="background-color:#ffffff"> </rain>
+                    <rain> </rain>
+                    <rain> </rain>
+                    <rain> </rain>
                 </div>
             </div>
             <div data-connector="weather" data-city="suresnes" data-zip_code="92150">
-            <ul><li><time datetime="20h">20h</time><span class="temperature">20°C</span></li><li><time datetime="23h">23h</time><span class="temperature">16°C</span></li><li><time datetime="2h">2h</time><span class="temperature">13°C</span></li><li><time datetime="5h">5h</time><span class="temperature">11°C</span></li><li><time datetime="8h">8h</time><span class="temperature">11°C</span></li><li><time datetime="11h">11h</time><span class="temperature">19°C</span></li><li><time datetime="14h">14h</time><span class="temperature">22°C</span></li><li><time datetime="17h">17h</time><span class="temperature">23°C</span></li><li><time datetime="20h">20h</time><span class="temperature"></span></li></ul></div>
+            </div>
         </section>
         <section class="transport left">
+            <fieldset class="ASSURE">
+                <legend>
+                    <span class="code">AS-SURE</span>
+                    <span class="stop">Belvédère / Berty Albrecht</span>
+                </legend>
+                <div data-connector="ratp" data-line="100100544:AS-SURE" data-stop="59049" data-failures="13">
+                </div>
+            </fieldset>
             <fieldset class="B93">
                 <legend>
                     <span class="code">93</span>
                     <span class="stop">Berty Albrecht</span>
                 </legend>
                 <div data-connector="ratp" data-line="100100093:93" data-stop="59049">
-                    <div><label>Rond Pt des Champs-Elysees</label><output>17</output></div><div><label>Invalides RER</label><output>26</output></div></div>
+                </div>
             </fieldset>
+            <!--
             <fieldset class="B93">
                 <legend>
                     <span class="code">93</span>
                     <span class="stop">Mairie</span>
                 </legend>
                 <div data-connector="ratp" data-line="100100093:93" data-stop="8738237">
-                    <div><label>Rond Pt des Champs-Elysees</label><output>15</output></div><div><label>Invalides RER</label><output>25</output></div></div>
+                </div>
             </fieldset>
+            -->
         </section>
         <section class="transport right">
             <fieldset class="T2">
@@ -74,7 +88,7 @@
                     <span class="stop">Belvédère</span>
                 </legend>
                 <div data-connector="ratp" data-line="100112012:T2" data-stop="59049">
-                    <div class="important"><label>Pont de Bezons</label><div>A l'approche</div></div><div><label>Pont de Bezons</label><output>8</output></div><div><label>Porte de Versailles</label><output>2</output></div><div><label>Porte de Versailles</label><output>11</output></div></div>
+                </div>
             </fieldset>
             <fieldset class="B93">
                 <legend>
@@ -82,7 +96,7 @@
                     <span class="stop">Pompidou</span>
                 </legend>
                 <div data-connector="ratp" data-line="100100093:93" data-stop="59:4015788">
-                    <div class="important"><label>Invalides RER</label><div>A l'arrêt</div></div><div><label>Suresnes-De Gaulle</label><output>4</output></div><div><label>Suresnes-De Gaulle</label><output>13</output></div><div><label>Rond Pt des Champs-Elysees</label><output>18</output></div></div>
+                </div>
             </fieldset>
             <fieldset class="B144">
                 <legend>
@@ -90,12 +104,12 @@
                     <span class="stop">Pompidou</span>
                 </legend>
                 <div data-connector="ratp" data-line="100100144:144" data-stop="59:4015788">
-                    <div><label>Rueil-Malmaison RER</label><output>6</output></div><div><label>La Defense</label><output>15</output></div><div><label>Rueil-Malmaison RER</label><output>16</output></div><div><label>La Defense</label><output>16</output></div></div>
+                </div>
             </fieldset>
         </section>
         <section class="news">
             <div data-connector="rss" data-url="http://www.lefigaro.fr/rss/figaro_flash-actu.xml">
-            <ul><li>États-Unis: un juge bloque une chasse au grizzli près du parc de Yellowstone</li><li>Patrimoine: Bern quittera sa mission s'il n'est qu'un «cache-misère»</li><li>Le youtubeur Squeezie s'invite chez ses abonnés du monde entier</li><li>Bernat au PSG, c'est officiel</li><li>Nucléaire: l'Iran rejette un appel de Paris à rouvrir des négociations élargies</li><li>La Palestine met en garde contre l'annulation de l'aide américaine aux réfugiés</li><li>La CFDT conteste la nomination de Besson</li><li>Archevêque cubain : le mariage gay c'est du «colonialisme idéologique»</li><li>Sénégal: le président Sall révoque le maire de Dakar</li><li>Yémen: la ministre française des Armées «révoltée»</li><li>Nicaragua: le gouvernement expulse la mission de l'ONU</li><li>Une croix gammée dans un bureau de Beaubourg</li><li>Ukraine: le dirigeant séparatiste Zakhartchenko tué dans une explosion</li><li>Il est 18h, l'essentiel de l'actualité</li><li>Washington accuse Moscou de «défendre l'assaut» syrien</li><li>Déchets: un centre d'enfouissement bloqué</li><li>Hollande : «Je ne suis jamais parti»</li><li>Tony Gallopin remporte la 7e étape</li><li>Angleterre: prison à vie pour un djihadiste</li><li>Macron «doit renoncer» au prélèvement à la source (Le Pen)</li></ul></div>
+            </div>
         </section>
         </article>
     </body>
