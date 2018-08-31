@@ -3,6 +3,17 @@
 last seen screen before entering in the real word
 
 
+## mandatory
+
+- pip3
+
+
+## optional
+
+- nginx: for remote access, otherwise you can go to `file:///path/to/index.html`
+- chromium: for kiosk mode
+
+
 ## installation
 
 ```bash
