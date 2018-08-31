@@ -13,7 +13,7 @@ xpath_expression = '//*[@data-connector="ratp"]'
 
 
 pretty_print = True
-path_default = os.path.dirname(os.path.abspath(__file__)) + '/../index.html'
+path_default = os.path.dirname(os.path.abspath(__file__)) + '/../www/index.html'
 path = sys.argv[1] if 2==len(sys.argv) else path_default
 
 tree = etree.parse(path)
