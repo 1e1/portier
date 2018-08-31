@@ -5,6 +5,7 @@ import requests
 import json
 from lxml import etree
 from lxml.builder import E
+from operator import itemgetter
 
 
 url_pattern = 'https://api.vianavigo.com/lines/{line}/stops/{stop}/realTime'
@@ -50,13 +51,20 @@ for e in tree.xpath(xpath_expression, namespaces=ns):
         error = data.get('err_code', 0)
         print(error)
     else:
+        for d in data:
+            way = d.get('sens', 0)
+            d['sens'] = way
+            
+        data_order = sorted(data, key=itemgetter('sens'))
+        
         for child in e:
             e.remove(child)
 
-        for schedule in data:
+        for schedule in data_order:
             #print(schedule)
             lineDirection = schedule.get('lineDirection', 'Sans arrêt')
             code = schedule.get('code')
+            way = schedule.get('sens')
 
             if 'message' == code:
                 message = schedule.get('schedule')
@@ -64,7 +72,7 @@ for e in tree.xpath(xpath_expression, namespaces=ns):
                     div = E.div(
                         E.label(lineDirection),
                         E.div(message),
-                        {"class": "important"}
+                        { 'class': 'important' }
                     )
                     e.append(div)
             elif 'duration' == code:
