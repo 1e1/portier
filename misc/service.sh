@@ -19,6 +19,12 @@ BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )
 PROJECT_DIR="$BASE_DIR/.."
 
 
+if [ ! -d $WWW ]
+then
+    mkdir $WWW
+fi
+
+
 cp $PROJECT_DIR/www/pages/suresnes.html $WWW/
 
 $PROJECT_DIR/update.sh --daemon --index=$WWW/index.html --dir=$WWW/suresnes.html
