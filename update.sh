@@ -64,7 +64,7 @@ z()
 
 x()
 {
-  for c in "$BASE_DIR/connectors/*"
+  for c in $BASE_DIR/connectors/*
   do
     echo "RUN $c"
 
