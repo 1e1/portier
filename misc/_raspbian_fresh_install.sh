@@ -25,20 +25,20 @@ echo '---'
 
 cd $HOME_USR
 
-curl -sSL -D - 'https://github.com/1e1/portier/archive/master.tar.gz' -o portier-master.tar.gz
-tar -xzf portier-master.tar.gz
-rm portier-master.tar.gz
+curl -sSL -D - 'https://github.com/1e1/portier/archive/master.tar.gz' -o portier.tar.gz
+tar -xzf portier.tar.gz
+rm portier.tar.gz
 
-cd portier-master
+cd portier
 ls -al
 
 
 if [ $TEMPLATE != All ]
 then
     echo 'make default webpage'
-    ln -s $WWW/$TEMPLATE.html $WWW/index.html
+    cp $WWW/$TEMPLATE.html $WWW/index.html
 fi
 
 
-bash ./misc/_install_core.sh
-bash ./misc/_install_webserver.sh
+bash ./misc/_install-core.sh
+bash ./misc/_install-webserver.sh

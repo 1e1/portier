@@ -2,7 +2,7 @@
 
 DIR='/var/www/ramdisk'
 
-[ ! -d $DIR ] && mkdir $DIR
+[ ! -d $DIR ] && sudo mkdir $DIR
 
 LINE="tmpfs $DIR tmpfs nodev,nosuid,size=1M 0 0"
 

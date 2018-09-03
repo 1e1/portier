@@ -12,6 +12,25 @@ const selfReload = url => {
     xhr.send();
 }
 
+const parseResponse = (target) => {
+    const imgs = domXml.getElementsByTagName('img');
+    const size = imgs.length;
+    let count = 0;
+
+    for (let i=0; i<size; ++i) {
+        const img = imgs.item(i);
+        const href = img.getAttribute('src');
+        const cache = new Image();
+
+        cache.onload = function() {
+            if (++count === size) {
+                refreshContent(domXml);
+            }
+        }
+        cache.src = href;
+    }
+}
+
 String.prototype.hashCode = function() {
     let hash = 0;
     for (let i = 0; i < this.length; i++) {
@@ -27,31 +46,21 @@ window.addEventListener('load', ev => {
     const url = new URL(window.location.href);
     let previousHashCode = 0;
 
+    //xhr.responseType = 'document';
+    xhr.overrideMimeType('application/xml');
     xhr.onreadystatechange = (rsc) => {
         const target = rsc.target;
 
         if (4 === target.readyState) {
-            const hashCode = target.responseText.hashCode();
+            const domXml = target.responseXML;
 
-            if (previousHashCode !== hashCode) {
-                previousHashCode = hashCode;
+            if (null !== domXml) {
+                const hashCode = domXml.innerHTML.hashCode();
+            
+                if (previousHashCode !== hashCode) {
+                    previousHashCode = hashCode;
 
-                const domXml = target.responseXML;
-                const imgs = domXml.getElementsByTagName('img');
-                const size = imgs.length;
-                let count = 0;
-        
-                for (let i=0; i<size; ++i) {
-                    const img = imgs.item(i);
-                    const href = img.getAttribute('src');
-                    const cache = new Image();
-        
-                    cache.onload = function() {
-                        if (++count === size) {
-                            refreshContent(domXml);
-                        }
-                    }
-                    cache.src = href;
+                    parseResponse(target, previousHashCode);
                 }
             }
         }

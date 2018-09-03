@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-read -r -d '' CONFIG <<- EOM
+read -d '' CONFIG <<- EOM
 [Unit]
 Description=Portier
 After=multi-user.target
@@ -14,6 +14,6 @@ Restart=on-abort
 WantedBy=multi-user.target
 EOM
 
-echo $CONFIG | sudo tee --append /lib/systemd/system/portier.service
+echo "$CONFIG" | sudo tee /lib/systemd/system/portier.service
 
-service portier start
+sudo service portier start

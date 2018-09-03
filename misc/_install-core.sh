@@ -5,10 +5,12 @@ PROJECT_DIR="$BASE_DIR/.."
 
 
 sudo apt-get update
-sudo apt-get install -y python3-pip
+#sudo apt-get install -y python3-pip
+
+#sudo -H pip3 install -U -r $PROJECT_DIR/requirements.txt
 
 
-pip3 install -r $PROJECT_DIR/requirements.txt
+sudo apt-get install -y python3-lxml python3-requests
 
 
 bash $BASE_DIR/ramdisk-create.sh
