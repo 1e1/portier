@@ -15,7 +15,7 @@ LINKS=()
 
 
 
-for opt in $*
+for opt in "$@"
 do
   case $opt in
   "-s"|"--no-index")

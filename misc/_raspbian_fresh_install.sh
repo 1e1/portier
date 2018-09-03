@@ -6,7 +6,7 @@ HOME_USR="/home/${USER}"
 WWW="./www/pages"
 
 
-for opt in $*
+for opt in "$@"
 do
   case $opt in
   --template=*)
