@@ -6,17 +6,6 @@ last seen screen before entering in the real word
 ![portrait](./screenshots/portrait.png)
 
 
-## mandatory
-
-- pip3
-
-
-## optional
-
-- nginx-light: for remote access, otherwise you can go to `file:///path/to/index.html`
-- chromium: for kiosk mode
-
-
 ## installation
 
 ### raspbian
@@ -27,7 +16,7 @@ use existing template (see template names in `./www/pages/`)
 
 ```bash
 # template = suresnes
-sh -c "$(curl -sSL https://raw.githubusercontent.com/1e1/portier/master/misc/_raspbian_fresh_install.sh --template=suresnes)"
+sh -c "$(curl -sSL https://raw.githubusercontent.com/1e1/portier/master/misc/_raspbian_fresh_install.sh) --template=suresnes"
 ```
 
 
@@ -37,7 +26,22 @@ sh -c "$(curl -sSL https://raw.githubusercontent.com/1e1/portier/master/misc/_ra
 ```
 
 
+#### update a template
+
+Then if you update a template into `/home/pi/portier/www/pages/`.
+You have just to restart the service: `service portier restart` or let's do it on startup/reboot.
+
+
+
 ### manual
+
+`apt-get install python3-pip`
+
+
+### optional
+
+- nginx-light: for remote access, otherwise you can go to `file:///path/to/index.html`
+- chromium: for kiosk mode
 
 ```bash
 pip install -r requirements.txt

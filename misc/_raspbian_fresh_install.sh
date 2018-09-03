@@ -1,7 +1,9 @@
 #!/bin/bash
 
 
-TEMPLATE=None
+TEMPLATE=All
+HOME_USR="/home/${USER}"
+WWW="./www/pages"
 
 
 for opt in $*
@@ -14,7 +16,14 @@ do
 done
 
 
-cd /home/${USER}/
+echo '-- INSTALL PORTIER --'
+echo "TEMPLATE=$TEMPLATE"
+echo "HOME_USR=$HOME_USR"
+echo "WWW=$WWW"
+echo '---'
+
+
+cd $HOME_USR
 
 curl -sSL -D - 'https://github.com/1e1/portier/archive/master.tar.gz' -o portier-master.tar.gz
 tar -xzf portier-master.tar.gz
@@ -24,11 +33,10 @@ cd portier-master
 ls -al
 
 
-echo 'make default webpage'
-
-if [ $TEMPLATE != None ]
+if [ $TEMPLATE != All ]
 then
-    ln -s ./www/pages/$TEMPLATE.html ./www/pages/index.html
+    echo 'make default webpage'
+    ln -s $WWW/$TEMPLATE.html $WWW/index.html
 fi
 
 
