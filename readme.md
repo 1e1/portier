@@ -18,9 +18,21 @@ last seen screen before entering in the real word
 
 ### raspbian
 
+
+#### single mode
+use existing template (see template names in `./www/pages/`)
+
+```bash
+# template = suresnes
+sh -c "$(curl -sSL https://raw.githubusercontent.com/1e1/portier/master/misc/_raspbian_fresh_install.sh --template=suresnes)"
+```
+
+
+#### use all template
 ```bash
 sh -c "$(curl -sSL https://raw.githubusercontent.com/1e1/portier/master/misc/_raspbian_fresh_install.sh)"
 ```
+
 
 ### manual
 
