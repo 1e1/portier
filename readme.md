@@ -16,7 +16,7 @@ use existing template (see template names in `./www/pages/`)
 
 ```bash
 # template = suresnes
-sh -c "$(curl -sSL https://raw.githubusercontent.com/1e1/portier/master/misc/_raspbian_fresh_install.sh) --template=suresnes"
+curl -sSL https://raw.githubusercontent.com/1e1/portier/master/misc/_raspbian_fresh_install.sh | bash -s -- --template=suresnes
 ```
 
 
