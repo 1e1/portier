@@ -38,8 +38,16 @@ for e in tree.xpath(xpath_expression, namespaces=ns):
     for index, dataCadran in enumerate(data.get('dataCadran')):
         color = dataCadran.get('color')
         #print(index +1, dataCadran)
-        rain = e.xpath(f"//rain[position()={index +1}]", namespaces=ns)
-        rain[0].set("style", f"background-color:#{color}")
+
+        #python3.7: rain = e.xpath(f"//rain[position()={index +1}]", namespaces=ns)
+        #python3.7: rain[0].set("style", f"background-color:#{color}")
+
+
+        xpath = '//rain[position()={index}]'.replace('{index}', str(index +1))
+        rain = e.xpath(xpath, namespaces=ns)
+
+        style = 'background-color:#{color}'.replace('{color}', color)
+        rain[0].set("style", style)
 
     
 xml_bytes = etree.tostring(tree, xml_declaration=False, method='xml', encoding='UTF-8', pretty_print=pretty_print)

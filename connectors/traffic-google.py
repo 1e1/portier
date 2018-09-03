@@ -43,7 +43,9 @@ for e in tree.xpath(xpath_expression, namespaces=ns):
         img = imgs[0]
         src = img.get('src')
 
-        img = E.img(src=f'https://www.google.com/{src}')
+        # python3.7: img = E.img(src=f'https://www.google.com/{src}')
+        img_src = 'https://www.google.com/{src}'.replace('{src}', src)
+        img = E.img(src=img_src)
 
         e.append(img)
 
