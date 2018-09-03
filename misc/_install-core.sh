@@ -11,5 +11,5 @@ sudo apt-get install -y python3-pip
 pip3 install -r $PROJECT_DIR/requirements.txt
 
 
-$BASE_DIR/ramdisk-create.sh
-$BASE_DIR/service-create.sh
+bash $BASE_DIR/ramdisk-create.sh
+bash $BASE_DIR/service-create.sh

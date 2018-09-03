@@ -7,4 +7,4 @@ sudo apt-get update
 sudo apt-get install -y nginx-lite
 
 
-$BASE_DIR/nginx-copy-conf.sh
+bash $BASE_DIR/nginx-copy-conf.sh

@@ -10,11 +10,19 @@ last seen screen before entering in the real word
 
 ## optional
 
-- nginx: for remote access, otherwise you can go to `file:///path/to/index.html`
+- nginx-light: for remote access, otherwise you can go to `file:///path/to/index.html`
 - chromium: for kiosk mode
 
 
 ## installation
+
+### raspbian
+
+```bash
+sh -c "$(curl -sSL https://raw.githubusercontent.com/1e1/portier/master/misc/_raspbian_fresh_install.sh)"
+```
+
+### manual
 
 ```bash
 pip install -r requirements.txt
