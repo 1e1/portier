@@ -2,6 +2,9 @@
 
 last seen screen before entering in the real word
 
+![landscape](./screenshots/landscape.png)
+![portrait](./screenshots/portrait.png)
+
 
 ## mandatory
 
