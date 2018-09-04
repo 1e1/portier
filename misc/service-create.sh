@@ -16,4 +16,7 @@ EOM
 
 echo "$CONFIG" | sudo tee /lib/systemd/system/portier.service
 
+sudo chmod +x /lib/systemd/system/portier.service
+
+sudo systemctl enable portier
 sudo service portier start

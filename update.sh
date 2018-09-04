@@ -17,9 +17,9 @@ LINKS=()
 
 
 
-export LC_ALL="fr_FR.UTF-8"
-export LANG="fr_FR.UTF-8"
-export LANGUAGE="fr_FR.UTF-8"
+[ $LC_ALL ] || export LC_ALL="fr_FR.UTF-8"
+[ $LANG ] || export LANG="fr_FR.UTF-8"
+[ $LANGUAGE ] || export LANGUAGE="fr_FR.UTF-8"
 
 
 
@@ -58,14 +58,6 @@ fi
 
 
 
-if [ -d "$SHM_PATH" ]
-then
-  WS_PATH=`mktemp -d "$SHM_PATH/portier-XXXXXX"`
-  echo "WORKSPACE $WS_PATH"
-fi
-
-
-
 z()
 {
   echo -n "sleep $1s ["
@@ -83,6 +75,12 @@ z()
 
 x()
 {
+  if [ -d "$SHM_PATH" ]
+  then
+    WS_PATH=`mktemp -d "$SHM_PATH/portier-XXXXXX"`
+    echo "WORKSPACE $WS_PATH"
+  fi
+
   for f in $FILES
   do
     echo "MAKE $f"
@@ -106,7 +104,7 @@ x()
     done
 
     echo "WRITE $TEMP_PATH"
-    mv "$VIRT_PATH" "$TEMP_PATH"
+    [ "$VIRT_PATH" == "$TEMP_PATH" ] || mv "$VIRT_PATH" "$TEMP_PATH"
     echo "MOVE $f"
     mv "$TEMP_PATH" "$f"
  
