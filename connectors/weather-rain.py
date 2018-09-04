@@ -4,6 +4,7 @@ import os
 import requests
 import json
 from lxml import etree
+from lxml.builder import E
 
 
 url_pattern = 'https://www.meteofrance.com/mf3-rpc-portlet/rest/pluie/{id}'
@@ -28,26 +29,42 @@ if ns.keys() and None in ns:
 for e in tree.xpath(xpath_expression, namespaces=ns):
     id = e.get('data-param')
     url = url_pattern.replace('{id}', id)
+    ul = E.ul()
+    minutes = 0
     
     print(url)
     r = requests.get(url, headers={})
     response = r.text
 
     data = json.loads(response)
+    dataCadran = data.get('dataCadran')
+    size = len(dataCadran)
 
-    for index, dataCadran in enumerate(data.get('dataCadran')):
+    for child in e:
+        e.remove(child)
+
+    for index, dataCadran in enumerate(dataCadran):
         color = dataCadran.get('color')
-        #print(index +1, dataCadran)
-
-        #python3.7: rain = e.xpath(f"//rain[position()={index +1}]", namespaces=ns)
-        #python3.7: rain[0].set("style", f"background-color:#{color}")
-
-
-        xpath = '//rain[position()={index}]'.replace('{index}', str(index +1))
-        rain = e.xpath(xpath, namespaces=ns)
-
+        
         style = 'background-color:#{color}'.replace('{color}', color)
-        rain[0].set("style", style)
+        
+        li = E.li(
+            ' ',
+            { 'style': style }
+        )
+        ul.append(li)
+
+        minutes = minutes + 5
+        
+        if (0 == minutes % 15) and (index + 1 != size):
+            sep = E.li(
+                str(minutes),
+                { 'class': 'minutes' }
+            )
+            ul.append(sep)
+
+    e.append(ul)
+
 
     
 xml_bytes = etree.tostring(tree, xml_declaration=False, method='xml', encoding='UTF-8', pretty_print=pretty_print)
