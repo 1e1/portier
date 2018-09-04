@@ -70,15 +70,22 @@ z()
 
 x()
 {
-  for c in $BASE_DIR/connectors/*
+  for f in $FILES
   do
-    echo "RUN $c"
+    echo "MAKE $f"
 
-    for f in $FILES
+    for c in $BASE_DIR/connectors/*
     do
-      echo "* $f"
-      $c $f
+      g="$f.part"
+      cp "$f" "$g"
+      echo "* $c"
+      $c $g
+      mv "$g" "$f"
     done
+    #do
+    #  echo "* $f"
+    #  $c $f
+    #done
 
     echo
   done
