@@ -43,7 +43,9 @@ const setConnectors = (domXml) => {
         const currentNode = currentNodes[i];
         const newNode = newNodes[i];
 
-        currentNode.innerHTML = newNode.innerHTML;
+        if (currentNode.innerHTML !== newNode.innerHTML) {
+            currentNode.innerHTML = newNode.innerHTML;
+        }
     }
 }
 
