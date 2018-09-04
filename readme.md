@@ -132,23 +132,23 @@ get the values on ViaNavigo.fr
 ### weather-rain
 ```html
 <div data-connector="weather-rain" data-param="920730">
-    <div class="flex">
-        <rain> </rain>
-        <rain> </rain>
-        <rain> </rain>
-        <span>15</span>
-        <rain> </rain>
-        <rain> </rain>
-        <rain> </rain>
-        <span>30</span>
-        <rain> </rain>
-        <rain> </rain>
-        <rain> </rain>
-        <span>45</span>
-        <rain> </rain>
-        <rain> </rain>
-        <rain> </rain>
-    </div>
+    <ul>
+        <li style="background-color:#123def"> </li>
+        <li style="background-color:#456abc"> </li>
+        <li style="background-color:#789000"> </li>
+        <li class="minutes">15</li>
+        <li style="background-color:#123def"> </li>
+        <li style="background-color:#456abc"> </li>
+        <li style="background-color:#789000"> </li>
+        <li class="minutes">30</li>
+        <li style="background-color:#123def"> </li>
+        <li style="background-color:#456abc"> </li>
+        <li style="background-color:#789000"> </li>
+        <li class="minutes">45</li>
+        <li style="background-color:#123def"> </li>
+        <li style="background-color:#456abc"> </li>
+        <li style="background-color:#789000"> </li>
+    </ul>
 </div>
 ```
 
