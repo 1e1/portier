@@ -56,6 +56,7 @@ optional options for `./update.sh`:
 - `--sleep=123`: sleep *123* seconds between steps of the endless loop
 - `--index=/path/to/index.html`(default=`./www/index.html`): index file
 - `--dir=/path/to/directory` or `--dir=/path/to/page.html` (default is `./www/pages`): xhtml pages to parse
+- `--shared-memory=/path/to/directory` (default is `/dev/shm`): workspace directory - a memory FS is efficient
 
 
 ## tips: use a RAM disk

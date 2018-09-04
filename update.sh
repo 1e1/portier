@@ -9,6 +9,8 @@ BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )
 WWW_DIR="$BASE_DIR/www"
 INDEX_PATH="$WWW_DIR/index.html"
 DIR_PATH="$WWW_DIR/pages"
+SHM_PATH='/dev/shm'
+WS_PATH=None
 FILES=()
 HTML=()
 LINKS=()
@@ -39,6 +41,9 @@ do
   --dir=*)
     DIR_PATH=${opt#*=}
     ;;
+  --shared-memory=*)
+    SHM_PATH=${opt#*=}
+    ;;
   esac
 done
 
@@ -49,6 +54,14 @@ then
   FILES=($DIR_PATH)
 else
   FILES="$DIR_PATH/*.html"
+fi
+
+
+
+if [ -d "$SHM_PATH" ]
+then
+  WS_PATH=`mktemp -d "$SHM_PATH/portier-XXXXXX"`
+  echo "WORKSPACE $WS_PATH"
 fi
 
 
@@ -74,21 +87,36 @@ x()
   do
     echo "MAKE $f"
 
+    TEMP_PATH="$f.tmp"
+    VIRT_PATH=$TEMP_PATH
+
+    if [ -d $WS_PATH ]
+    then
+      bn=$(basename $f)
+      VIRT_PATH="$WS_PATH/$bn"
+    fi
+
+    echo "WORKFILE $VIRT_PATH"
+    cp "$f" "$VIRT_PATH"
+
     for c in $BASE_DIR/connectors/*
     do
-      g="$f.part"
-      cp "$f" "$g"
       echo "* $c"
-      $c $g
-      mv "$g" "$f"
+      $c "$VIRT_PATH"
     done
-    #do
-    #  echo "* $f"
-    #  $c $f
-    #done
 
+    echo "WRITE $TEMP_PATH"
+    mv "$VIRT_PATH" "$TEMP_PATH"
+    echo "MOVE $f"
+    mv "$TEMP_PATH" "$f"
+ 
     echo
   done
+
+  if [ -d $WS_PATH ]
+  then
+    rm -r "$WS_PATH"
+  fi
 }
 
 xx()
