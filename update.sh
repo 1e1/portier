@@ -128,7 +128,7 @@ HTML+=('</head>')
 if [ ${#LINKS[@]} -gt 1 ]
 then
   HTML+=('<body>')
-  HTML+=('<section class="index flex">')
+  HTML+=('<section class="index">')
   for l in ${LINKS[*]}
   do
     bn=$(basename $l)

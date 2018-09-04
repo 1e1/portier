@@ -153,10 +153,12 @@ ul {
     margin: 0;
     padding: 0;
     list-style: none;
+    flex-wrap: nowrap;
 }
 
 li {
     text-align: center;
+    height: 1em;
 }
 
 li .temperature {
@@ -171,7 +173,6 @@ ul,
 section.index {
     display: flex;
     padding: 0;
-    flex-wrap: nowrap;
     align-content: stretch;
 }
 
@@ -179,7 +180,6 @@ li,
 section.index > a {
     flex-grow: 1;
     display: block;
-    height: 1em;
 }
 
 li.minutes {
