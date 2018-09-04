@@ -124,12 +124,14 @@ then
   HTML+=('<section class="index flex">')
   for l in ${LINKS[*]}
   do
-    HTML+=("<a href='$l'>$l</a>")
+    bn=$(basename $l)
+    fn=${bn%.*}
+    HTML+=("<a href='$l'>$fn</a>")
   done
   HTML+=('</section>')
-  HTML+=('<section class="news"><ul><li>')
+  HTML+=('<section class="center">')
   HTML+=($(date "+%Y-%m-%d %X"))
-  HTML+=('</li></ul></section>')
+  HTML+=('</section>')
   HTML+=('</body>')
 fi
 HTML+=('</html>')
