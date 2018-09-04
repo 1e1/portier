@@ -34,7 +34,7 @@ for e in tree.xpath(xpath_expression, namespaces=ns):
     response = r.text
 
     rtree = etree.HTML(response)
-    imgs = rtree.xpath('//img[starts-with(@src,"/maps")][1]', namespaces=ns)
+    imgs = rtree.xpath('//img[starts-with(@src,"/maps")][1]')
     
     if (len(imgs)):
         for child in e:
