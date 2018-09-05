@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import sys
 import os
-import time
+from datetime import datetime
 from lxml import etree
 from lxml.builder import E
 
@@ -26,9 +26,14 @@ if ns.keys() and None in ns:
 
 for e in tree.xpath(xpath_expression, namespaces=ns):
     dataFormat = e.get('data-format', '%H:%M')
+    dataTimezone = e.get('data-timezone', 'Etc/UTC')
 
-    customTime = time.strftime(dataFormat)
-    isoTime = time.strftime('%Y-%m-%dT%H:%M:%S')
+    utcnow = datetime.datetime.utcnow()
+    timezone = pytz.timezone(dataTimezone)
+    localnow = utcnow.astimezone(timezone)
+
+    isoTime = str(utcnow.strftime)
+    customTime = localnow.strftime(dataFormat)
 
     for child in e:
         e.remove(child)
