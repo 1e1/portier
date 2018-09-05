@@ -30,9 +30,22 @@ section.traffic img {
     height: auto;
 }
 
+section.time, 
 section.weather {
-    top: 0;
     left: 0;
+    top: 0;
+}
+
+section.time {
+    text-align: left;
+    overflow: visible;
+    color: #000;
+    font-weight: lighter;
+    margin: 3px 0 0 0.5em;
+    text-shadow: #FFF 0 0 1px;
+}
+
+section.weather {
     right: 0;
     height: 36px;
 }
@@ -40,6 +53,7 @@ section.weather {
 section.weather > div {
     white-space: nowrap;
     overflow-x: auto;
+    overflow-y: hidden;
 }
 
 section.weather li:first-of-type .temperature {
@@ -161,10 +175,6 @@ li {
     height: 1em;
 }
 
-li .temperature {
-    margin: 0 1em;
-}
-
 .center {
     text-align: center;
 }
@@ -182,6 +192,7 @@ section.index > a {
     display: block;
 }
 
+li time,
 li.minutes {
     opacity: 0.3;
     margin: 0 4px;
@@ -266,6 +277,10 @@ section.news li {
 @media only screen and (max-width: 600px) and (orientation:portrait) {
     section {
         position: relative;
+    }
+
+    section.time {
+        position: absolute;
     }
     
     section.traffic,

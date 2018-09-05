@@ -31,6 +31,12 @@ const parseResponse = (domXml, callback) => {
     }
 }
 
+const refreshNode = (currentNode, newNode) => {
+    if (currentNode.textContent != newNode.textContent) {
+        currentNode.innerHTML = newNode.innerHTML;
+    }
+}
+
 const setConnectors = (domXml) => {
     const currentNodes = document.querySelectorAll(REFRESH_SELECTOR);
     const newNodes = domXml.querySelectorAll(REFRESH_SELECTOR);
@@ -43,9 +49,7 @@ const setConnectors = (domXml) => {
         const currentNode = currentNodes[i];
         const newNode = newNodes[i];
 
-        if (currentNode.innerHTML !== newNode.innerHTML) {
-            currentNode.innerHTML = newNode.innerHTML;
-        }
+        refreshNode(currentNode, newNode);
     }
 }
 

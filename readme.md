@@ -178,3 +178,12 @@ get the values on MeteoFrance.fr
 get the values on MeteoFrance.fr
 - `data-city`: city name
 - `data-zip_code`: zip code
+
+### time
+```html
+<div data-connector="time">
+    <time datetime="2018-09-05T21:33:51">21:33</time></div>
+</div>
+```
+
+- `data-format`: override the default format
