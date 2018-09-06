@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import sys
 import os
+import pytz
 from datetime import datetime
 from lxml import etree
 from lxml.builder import E
@@ -28,11 +29,14 @@ for e in tree.xpath(xpath_expression, namespaces=ns):
     dataFormat = e.get('data-format', '%H:%M')
     dataTimezone = e.get('data-timezone', 'Etc/UTC')
 
-    utcnow = datetime.datetime.utcnow()
-    timezone = pytz.timezone(dataTimezone)
-    localnow = utcnow.astimezone(timezone)
+    utcnow = datetime.utcnow()
+    
+    old_timezone = pytz.timezone('Etc/UTC')
+    new_timezone = pytz.timezone(dataTimezone)
 
-    isoTime = str(utcnow.strftime)
+    localnow = old_timezone.localize(utcnow).astimezone(new_timezone)
+
+    isoTime = utcnow.isoformat()
     customTime = localnow.strftime(dataFormat)
 
     for child in e:
