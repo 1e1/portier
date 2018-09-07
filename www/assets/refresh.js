@@ -34,7 +34,47 @@ const parseResponse = (domXml, callback) => {
 const refreshNode = (currentNode, newNode) => {
     if (currentNode.textContent != newNode.textContent) {
         currentNode.innerHTML = newNode.innerHTML;
+
+        return true;
     }
+
+    return false;
+}
+
+const makeIcon = (size) => {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const textSize = Math.round(size * 0.75);
+    const text = (new Date()).getMinutes();
+
+    canvas.width = size;
+    canvas.height = size;
+
+    ctx.fillStyle='#EEE';
+    ctx.fillRect(0, 0, size, size); 
+
+    ctx.font = `${textSize}px mono`;
+    ctx.fillStyle    = '#000';
+    ctx.textAlign    = 'center';
+    ctx.textBaseline = 'middle'; 
+    ctx.fillText(text, canvas.width/2, canvas.height/2);
+
+    return canvas.toDataURL('image/png');
+}
+
+const updateFavicon = () => {
+    const head = document.querySelector('head');
+
+    let link = head.querySelector('link[rel="icon"]');
+
+    if (null===link) {
+        link = document.createElement('link');
+        link.setAttribute('rel', 'icon');
+
+        head.appendChild(link);
+    }
+
+    link.href = makeIcon(64);
 }
 
 const setConnectors = (domXml) => {
@@ -45,11 +85,18 @@ const setConnectors = (domXml) => {
         window.top.location.reload(true);
     }
 
+    let hasUpdate = false;
+
     for (let i=0; i<currentNodes.length; ++i) {
         const currentNode = currentNodes[i];
         const newNode = newNodes[i];
+        const isUpdated = refreshNode(currentNode, newNode);
 
-        refreshNode(currentNode, newNode);
+        hasUpdate |= isUpdated;
+    }
+
+    if (hasUpdate) {
+        updateFavicon();
     }
 }
 
