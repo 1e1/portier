@@ -15,23 +15,34 @@ const selfReload = url => {
 const parseResponse = (domXml, callback) => {
     const imgs = domXml.getElementsByTagName('img');
     const size = imgs.length;
-    let count = 0;
 
-    for (let i=0; i<size; ++i) {
-        const img = imgs.item(i);
-        const href = img.getAttribute('src');
-        const cache = new Image();
+    if (0 === size) {
+        callback(domXml);
+    } else {
+        let count = 0;
 
-        cache.onload = () => {
-            if (++count === size) {
-                callback(domXml);
+        for (let i=0; i<size; ++i) {
+            const img = imgs.item(i);
+            const href = img.getAttribute('src');
+            const cache = new Image();
+
+            cache.onload = () => {
+                if (++count === size) {
+                    callback(domXml);
+                }
             }
+            cache.src = href;
         }
-        cache.src = href;
     }
 }
 
 const refreshNode = (currentNode, newNode) => {
+    if (currentNode.childElementCount !== newNode.childElementCount) {
+        currentNode.innerHTML = newNode.innerHTML;
+
+        return true;
+    }
+
     if (currentNode.textContent != newNode.textContent) {
         currentNode.innerHTML = newNode.innerHTML;
 
@@ -42,10 +53,16 @@ const refreshNode = (currentNode, newNode) => {
 }
 
 const makeIcon = (size) => {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    const textSize = Math.round(size * 0.75);
-    const text = (new Date()).getMinutes();
+    const canvas   = document.createElement('canvas');
+    const ctx      = canvas.getContext('2d');
+    const textSize = Math.round(size / 2);
+    const angle    = Math.round(1000 * Math.PI/4) / 1000;
+    const date     = new Date();
+    const hour     = date.getHours();
+    const minute   = ('00' + date.getMinutes()).slice(-2);
+
+    const x_text = size / 2;
+    const y_text = size / 2;
 
     canvas.width = size;
     canvas.height = size;
@@ -56,8 +73,12 @@ const makeIcon = (size) => {
     ctx.font = `${textSize}px mono`;
     ctx.fillStyle    = '#000';
     ctx.textAlign    = 'center';
-    ctx.textBaseline = 'middle'; 
-    ctx.fillText(text, canvas.width/2, canvas.height/2);
+    ctx.textBaseline = 'middle';
+    ctx.translate(x_text, y_text);
+    ctx.save();
+
+    ctx.rotate(-angle);
+    ctx.fillText(`${hour}:${minute}`, 0, 0);
 
     return canvas.toDataURL('image/png');
 }
