@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# coding=utf-8
+
 import sys
 import os
 from lxml import etree
@@ -45,7 +47,7 @@ for e in tree.xpath(xpath_expression, namespaces=ns):
     e.append(ul)
 
 
-xml_bytes = etree.tostring(tree, xml_declaration=False, method='xml', encoding='UTF-8', pretty_print=pretty_print)
+xml_bytes = etree.tostring(tree, xml_declaration=False, method='xml', pretty_print=pretty_print)
 xml_text = xml_bytes.decode('utf-8')
 
 with open(output_path, 'w') as xml_file:

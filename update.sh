@@ -16,11 +16,7 @@ HTML=()
 LINKS=()
 
 
-
-[ $LC_ALL ] || export LC_ALL="fr_FR.UTF-8"
-[ $LANG ] || export LANG="fr_FR.UTF-8"
-[ $LANGUAGE ] || export LANGUAGE="fr_FR.UTF-8"
-
+export PYTHONIOENCODING='utf-8'
 
 
 for opt in "$@"
@@ -56,6 +52,13 @@ else
   FILES="$DIR_PATH/*.html"
 fi
 
+if [ -d "$SHM_PATH" ]
+then
+  rm -rf $SHM_PATH/portier-*
+  WS_PATH=`mktemp -d "$SHM_PATH/portier-XXXXXX"`
+  echo "WORKSPACE $WS_PATH"
+fi
+
 
 
 z()
@@ -75,46 +78,34 @@ z()
 
 x()
 {
-  if [ -d "$SHM_PATH" ]
-  then
-    WS_PATH=`mktemp -d "$SHM_PATH/portier-XXXXXX"`
-    echo "WORKSPACE $WS_PATH"
-  fi
-
   for f in $FILES
   do
     echo "MAKE $f"
 
     TEMP_PATH="$f.tmp"
-    VIRT_PATH=$TEMP_PATH
 
     if [ -d $WS_PATH ]
     then
       bn=$(basename $f)
-      VIRT_PATH="$WS_PATH/$bn"
+      TEMP_PATH="$WS_PATH/$bn"
     fi
 
-    echo "WORKFILE $VIRT_PATH"
-    cp "$f" "$VIRT_PATH"
+    echo "WORKFILE $TEMP_PATH"
+    ls -l $f
 
     for c in $BASE_DIR/connectors/*
     do
       echo "* $c"
-      $c "$VIRT_PATH"
-    done
+      $c "$f" "$TEMP_PATH"
+      ls -l $TEMP_PATH
 
-    echo "WRITE $TEMP_PATH"
-    [ "$VIRT_PATH" == "$TEMP_PATH" ] || mv "$VIRT_PATH" "$TEMP_PATH"
-    echo "MOVE $f"
-    mv "$TEMP_PATH" "$f"
+      echo "WRITE $TEMP_PATH"
+      mv "$TEMP_PATH" "$f"
+      ls -l $f
+    done
  
     echo
   done
-
-  if [ -d $WS_PATH ]
-  then
-    rm -r "$WS_PATH"
-  fi
 }
 
 xx()
@@ -186,4 +177,11 @@ then
 else
   echo 'index: none'
   echo
+fi
+
+
+
+if [ -d $WS_PATH ]
+then
+  rm -r "$WS_PATH"
 fi

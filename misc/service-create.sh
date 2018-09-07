@@ -5,18 +5,19 @@ read -d '' CONFIG <<- EOM
 Description=Portier
 After=multi-user.target
 
-[Service]
-Type=simple
-ExecStart=/home/${USER}/portier/misc/service.sh
-Restart=on-abort
-
 [Install]
 WantedBy=multi-user.target
+
+[Service]
+Type=simple
+User=${USER}
+Restart=always
+RemainAfterExit=yes
+ExecStart=/home/${USER}/portier/misc/service.sh
 EOM
 
 echo "$CONFIG" | sudo tee /lib/systemd/system/portier.service
 
-sudo chmod +x /lib/systemd/system/portier.service
-
 sudo systemctl enable portier
-sudo service portier start
+sudo systemctl daemon-reload
+sudo systemctl restart portier
