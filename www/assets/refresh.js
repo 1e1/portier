@@ -22,7 +22,7 @@ const parseResponse = (domXml, callback) => {
         const href = img.getAttribute('src');
         const cache = new Image();
 
-        cache.onload = function() {
+        cache.onload = () => {
             if (++count === size) {
                 callback(domXml);
             }

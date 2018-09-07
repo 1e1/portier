@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 WWW=/var/www/ramdisk/around_home
 BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )

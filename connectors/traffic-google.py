@@ -12,9 +12,10 @@ xpath_expression = '//*[@data-connector="traffic-google"]'
 
 pretty_print = True
 path_default = os.path.dirname(os.path.abspath(__file__)) + '/../www/index.html'
-path = sys.argv[1] if 2==len(sys.argv) else path_default
+input_path = sys.argv[1] if 1<len(sys.argv) else path_default
+output_path = sys.argv[2] if 2<len(sys.argv) else input_path
 
-tree = etree.parse(path)
+tree = etree.parse(input_path)
 
 #  a hack allowing to access the
 #  default namespace (if defined) via the 'p:' prefix    
@@ -53,5 +54,5 @@ for e in tree.xpath(xpath_expression, namespaces=ns):
 xml_bytes = etree.tostring(tree, xml_declaration=False, method='xml', encoding='UTF-8', pretty_print=pretty_print)
 xml_text = xml_bytes.decode('utf-8')
 
-with open(path, 'w') as xml_file:
+with open(output_path, 'w') as xml_file:
     print(xml_text, file=xml_file)
