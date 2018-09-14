@@ -132,7 +132,7 @@ HTML+=('<html>')
 HTML+=('<head>')
 if [ ${#LINKS[@]} -gt 1 ]
 then
-  HTML+=('<link rel="stylesheet" href="./assets/style.css"/>')
+  HTML+=('<link rel="stylesheet" href="./assets/css/style.css"/>')
   for l in ${LINKS[@]}
   do
     HTML+=("<link rel="preload" href='$l'/>")

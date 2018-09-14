@@ -42,6 +42,8 @@ for e in tree.xpath(xpath_expression, namespaces=ns):
     isoTime = utcnow.isoformat()
     customTime = localnow.strftime(dataFormat)
 
+    print(isoTime)
+
     for child in e:
         e.remove(child)
 

@@ -1,0 +1,61 @@
+@media only screen and (max-width: 600px) and (orientation:portrait) {
+    section {
+        position: relative;
+    }
+
+    section.time {
+        position: absolute;
+    }
+    
+    section.traffic,
+    section.transport {
+        top: 0;
+    }
+    
+    section.transport {
+        width: auto;
+    }
+    
+    fieldset {
+        width: auto;
+        border: 1px;
+        padding: 2px;
+    }
+
+    section.transport output {
+        right: 8px;
+    }
+
+    fieldset div[data-connector] {
+        width: auto;
+    }
+
+    fieldset label,
+    legend {
+        max-width: auto;
+    }
+    
+    section.news {
+        overflow: visible;
+    }
+
+    section.news ul {
+        display: block;
+    }
+
+    section.news li {
+        display: block;
+        height: auto;
+        text-shadow: none;
+        color: #333;
+        text-align: left;
+    }
+
+    section.news li:first-child {
+        display: block;
+    }
+    
+    section.news li:nth-child(2n) {
+        background-color: rgba(0,0,0,0.1);
+    }
+}

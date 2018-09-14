@@ -43,6 +43,7 @@ section.time {
     font-weight: lighter;
     margin: 3px 0 0 0.5em;
     text-shadow: #FFF 0 0 1px;
+    z-index: 20;
 }
 
 section.weather {
@@ -56,8 +57,15 @@ section.weather > div {
     overflow-y: hidden;
 }
 
-section.weather li:first-of-type .temperature {
+section.weather li:first-of-type .feel_temperature {
     font-weight: bold;
+}
+
+section.weather .temperature,
+section.weather .uv,
+section.weather li:not(:first-of-type) .wind,
+section.weather .rain {
+    display: none;
 }
 
 section.transport {
@@ -193,6 +201,7 @@ section.index > a {
 }
 
 li time,
+li .wind,
 li.minutes {
     opacity: 0.3;
     margin: 0 4px;
@@ -233,106 +242,4 @@ img,
 li,
 section.news li {
     border-radius: 4px;
-}
-
-
-
-@media only screen and (max-width: 600px) and (orientation:landscape) {
-    section.transport {
-        width: 110px;
-        font-size: 9px;
-    }
-    
-    fieldset {
-        width: 100px;
-        border: 1px;
-        padding: 2px;
-    }
-
-    section.transport output {
-        right: 8px;
-    }
-
-    fieldset div[data-connector] {
-        width: 100px;
-    }
-
-    fieldset label,
-    legend {
-        max-width: 90px;
-    }
-
-    legend {
-        padding: 0 2px;
-        margin-top: 2px;
-    }
-
-    output {
-        text-shadow: #000 0 0 1px;
-    }
-}
-
-
-
-@media only screen and (max-width: 600px) and (orientation:portrait) {
-    section {
-        position: relative;
-    }
-
-    section.time {
-        position: absolute;
-    }
-    
-    section.traffic,
-    section.transport {
-        top: 0;
-    }
-    
-    section.transport {
-        width: auto;
-    }
-    
-    fieldset {
-        width: auto;
-        border: 1px;
-        padding: 2px;
-    }
-
-    section.transport output {
-        right: 8px;
-    }
-
-    fieldset div[data-connector] {
-        width: auto;
-    }
-
-    fieldset label,
-    legend {
-        max-width: auto;
-    }
-    
-    section.news {
-        overflow: visible;
-    }
-
-    section.news ul {
-        display: block;
-    }
-
-    section.news li {
-        display: block;
-        overflow: hidden;
-        text-shadow: none;
-        color: #333;
-        text-overflow: ellipsis;
-        text-align: left;
-    }
-
-    section.news li:first-child {
-        display: block;
-    }
-    
-    section.news li:nth-child(2n) {
-        background-color: rgba(0,0,0,0.1);
-    }
 }

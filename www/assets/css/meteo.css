@@ -1,0 +1,272 @@
+.weather *[data-temperature] .temperature,
+.weather *[data-feel_temperature] .feel_temperature {
+    text-shadow: #000 0 0 1px;
+    color: #a7194b
+}
+
+.weather *[data-temperature^="-"] .temperature,
+.weather *[data-feel_temperature^="-"] .feel_temperature {
+    color: #8601af
+}
+
+.weather *[data-temperature=""] .temperature,
+.weather *[data-feel_temperature=""] .feel_temperature {
+    color: none;
+}
+
+.weather *[data-temperature="-12"] .temperature,
+.weather *[data-temperature="-11"] .temperature,
+.weather *[data-temperature="-10"] .temperature,
+.weather *[data-temperature="-9"] .temperature,
+.weather *[data-temperature="-8"] .temperature,
+.weather *[data-feel_temperature="-12"] .feel_temperature,
+.weather *[data-feel_temperature="-11"] .feel_temperature,
+.weather *[data-feel_temperature="-10"] .feel_temperature,
+.weather *[data-feel_temperature="-9"] .feel_temperature,
+.weather *[data-feel_temperature="-8"] .feel_temperature {
+    color: #3d01a4
+}
+
+.weather *[data-temperature="-7"] .temperature,
+.weather *[data-temperature="-6"] .temperature,
+.weather *[data-temperature="-5"] .temperature,
+.weather *[data-temperature="-4"] .temperature,
+.weather *[data-temperature="-3"] .temperature,
+.weather *[data-feel_temperature="-7"] .feel_temperature,
+.weather *[data-feel_temperature="-6"] .feel_temperature,
+.weather *[data-feel_temperature="-5"] .feel_temperature,
+.weather *[data-feel_temperature="-4"] .feel_temperature,
+.weather *[data-feel_temperature="-3"] .feel_temperature {
+    color: #0247fe
+}
+
+.weather *[data-temperature="-2"] .temperature,
+.weather *[data-temperature="-1"] .temperature,
+.weather *[data-temperature="0"] .temperature,
+.weather *[data-temperature="1"] .temperature,
+.weather *[data-temperature="2"] .temperature,
+.weather *[data-feel_temperature="-2"] .feel_temperature,
+.weather *[data-feel_temperature="-1"] .feel_temperature,
+.weather *[data-feel_temperature="0"] .feel_temperature,
+.weather *[data-feel_temperature="1"] .feel_temperature,
+.weather *[data-feel_temperature="2"] .feel_temperature {
+    color: #0391ce
+}
+
+.weather *[data-temperature="3"] .temperature,
+.weather *[data-temperature="4"] .temperature,
+.weather *[data-temperature="5"] .temperature,
+.weather *[data-temperature="5"] .temperature,
+.weather *[data-temperature="7"] .temperature,
+.weather *[data-feel_temperature="3"] .feel_temperature,
+.weather *[data-feel_temperature="4"] .feel_temperature,
+.weather *[data-feel_temperature="5"] .feel_temperature,
+.weather *[data-feel_temperature="5"] .feel_temperature,
+.weather *[data-feel_temperature="7"] .feel_temperature {
+    color: #66b032
+}
+
+.weather *[data-temperature="8"] .temperature,
+.weather *[data-temperature="9"] .temperature,
+.weather *[data-temperature="10"] .temperature,
+.weather *[data-temperature="11"] .temperature,
+.weather *[data-temperature="12"] .temperature,
+.weather *[data-feel_temperature="8"] .feel_temperature,
+.weather *[data-feel_temperature="9"] .feel_temperature,
+.weather *[data-feel_temperature="10"] .feel_temperature,
+.weather *[data-feel_temperature="11"] .feel_temperature,
+.weather *[data-feel_temperature="12"] .feel_temperature {
+    color: #d0ea2b
+}
+
+.weather *[data-temperature="13"] .temperature,
+.weather *[data-temperature="14"] .temperature,
+.weather *[data-temperature="15"] .temperature,
+.weather *[data-temperature="16"] .temperature,
+.weather *[data-temperature="17"] .temperature,
+.weather *[data-feel_temperature="13"] .feel_temperature,
+.weather *[data-feel_temperature="14"] .feel_temperature,
+.weather *[data-feel_temperature="15"] .feel_temperature,
+.weather *[data-feel_temperature="16"] .feel_temperature,
+.weather *[data-feel_temperature="17"] .feel_temperature {
+    color: #fefe33
+}
+
+.weather *[data-temperature="18"] .temperature,
+.weather *[data-temperature="19"] .temperature,
+.weather *[data-temperature="20"] .temperature,
+.weather *[data-temperature="21"] .temperature,
+.weather *[data-temperature="22"] .temperature,
+.weather *[data-feel_temperature="18"] .feel_temperature,
+.weather *[data-feel_temperature="19"] .feel_temperature,
+.weather *[data-feel_temperature="20"] .feel_temperature,
+.weather *[data-feel_temperature="21"] .feel_temperature,
+.weather *[data-feel_temperature="22"] .feel_temperature {
+    color: #fabc02
+}
+
+.weather *[data-temperature="23"] .temperature,
+.weather *[data-temperature="24"] .temperature,
+.weather *[data-temperature="25"] .temperature,
+.weather *[data-temperature="26"] .temperature,
+.weather *[data-temperature="27"] .temperature,
+.weather *[data-feel_temperature="23"] .feel_temperature,
+.weather *[data-feel_temperature="24"] .feel_temperature,
+.weather *[data-feel_temperature="25"] .feel_temperature,
+.weather *[data-feel_temperature="26"] .feel_temperature,
+.weather *[data-feel_temperature="27"] .feel_temperature {
+    color: #fb9902
+}
+
+.weather *[data-temperature="28"] .temperature,
+.weather *[data-temperature="29"] .temperature,
+.weather *[data-temperature="30"] .temperature,
+.weather *[data-temperature="31"] .temperature,
+.weather *[data-temperature="32"] .temperature,
+.weather *[data-feel_temperature="28"] .feel_temperature,
+.weather *[data-feel_temperature="29"] .feel_temperature,
+.weather *[data-feel_temperature="30"] .feel_temperature,
+.weather *[data-feel_temperature="31"] .feel_temperature,
+.weather *[data-feel_temperature="32"] .feel_temperature {
+    color: #fd5308
+}
+
+.weather *[data-temperature="33"] .temperature,
+.weather *[data-temperature="34"] .temperature,
+.weather *[data-temperature="35"] .temperature,
+.weather *[data-temperature="36"] .temperature,
+.weather *[data-temperature="37"] .temperature,
+.weather *[data-feel_temperature="33"] .feel_temperature,
+.weather *[data-feel_temperature="34"] .feel_temperature,
+.weather *[data-feel_temperature="35"] .feel_temperature,
+.weather *[data-feel_temperature="36"] .feel_temperature,
+.weather *[data-feel_temperature="37"] .feel_temperature {
+    color: #fe2712
+}
+
+
+@media only screen and (min-width: 600px) {
+    li time {
+        color: transparent;
+    }
+
+    .weather *[data-picture] {
+        background-image: none;
+    }
+    
+    .weather *[data-temperature] .temperature,
+    .weather *[data-feel_temperature] .feel_temperature {
+        text-shadow: #000 0 0 1px, rgba(0,0,0,0.8) 0 0 2px;
+    }
+
+    .weather *[data-picture]::before {
+        white-space: nowrap;
+        content: attr(data-datetime) "h";
+        text-align: left;
+        color: rgba(0,0,0,0.3);
+        margin-top: -20px;
+        padding-top: 20px;
+        padding-left: 9px;
+        position: absolute;
+        overflow: visible;
+        display: block;
+        width: 70px;
+        height: 40px;
+        background: url("../svg/meteofrance.svg") no-repeat;
+        background-position: 0 0;
+        background-size: 70px auto;
+        z-index: 10;
+    }
+
+    /* "Ensoleillé ou Nuit claire" */
+    .weather *[data-picture~="Ensoleillé"i]::before,
+    .weather *[data-picture~="Nuit-claire"i]::before {
+        background-position-y: 0;
+    }
+
+    .weather *[data-picture~="Ciel-voilé"i]::before {
+        background-position-y: -112px;
+    }
+
+    .weather *[data-picture~="Éclaircies"i]::before {
+        background-position-y: -224px;
+    }
+
+    .weather *[data-picture~="Très-nuageux"i]::before {
+        background-position-y: -336px;
+    }
+
+    /* "Brume ou bancs de brouillard" */
+    .weather *[data-picture~="Brume"i]::before,
+    .weather *[data-picture~="bancs-de-brouillard"i]::before {
+        background-position-y: -504px;
+    }
+
+    .weather *[data-picture~="Brouillard"i]::before {
+        background-position-y: -560px;
+    }
+
+    .weather *[data-picture~="Brouillard-givrant"i]::before {
+        background-position-y: -616px;
+    }
+
+    /* Pluie / Averses */
+    .weather *[data-picture~="Pluie"i]::before,
+    .weather *[data-picture~="Averses"i]::before {
+        background-position-y: -1181px;
+    }
+
+    /* Bruine / Pluie faible */
+    .weather *[data-picture~="Bruine"i]::before,
+    .weather *[data-picture~="Pluie-faible"i]::before {
+        background-position-y: -672px;
+    }
+
+    .weather *[data-picture~="Pluie verglaçante"i]::before {
+        background-position-y: -842px;
+    }
+
+    /* Pluies éparses / Rares averses */
+    .weather *[data-picture~="Pluies-éparses"i]::before,
+    .weather *[data-picture~="Rares-averses"i]::before {
+        background-position-y: -1016px;
+    }
+
+    .weather *[data-picture~="Pluie-forte"i]::before {
+        background-position-y: -1232px;
+    }
+
+    .weather *[data-picture~="Pluie-orageuses"i]::before {
+        background-position-y: -1406px;
+    }
+
+    .weather *[data-picture~="Quelques-flocons"i]::before {
+        background-position-y: -1577px;
+    }
+
+    /* Neige / Averses de neige */
+    .weather [data-picture~="Neige"i]::before,
+    .weather *[data-picture~="Averses-de-neige"i]::before {
+        background-position-y: -1909px;
+    }
+
+    .weather *[data-picture~="Pluie-et-neige"i]::before {
+        background-position-y: -1744px;
+    }
+
+    .weather *[data-picture~="Neige-forte"i]::before {
+        background-position-y: -1960px;
+    }
+
+    .weather *[data-picture~="Risque-de-grêle"i]::before {
+        background-position-y: -2131px;
+    }
+
+    .weather *[data-picture~="Orages"i]::before {
+        background-position-y: -2470px;
+    }
+
+    .weather *[data-picture~="Risque-d-orages"i]::before {
+        background-position-y: -2296px;
+    }
+}
