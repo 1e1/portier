@@ -6,10 +6,15 @@ const REFRESH_SELECTOR = '*[data-connector]';
 
 
 const xhr = new XMLHttpRequest();
+xhr._lock = false;
 
 const selfReload = url => {
-    xhr.open('GET', url.toString(), true);
-    xhr.send();
+    if (false === xhr._lock) {
+        xhr._lock = true;
+
+        xhr.open('GET', url.toString(), true);
+        xhr.send();
+    }
 }
 
 const parseResponse = (domXml, callback) => {
@@ -130,6 +135,8 @@ window.addEventListener('load', ev => {
         const target = rsc.target;
 
         if (4 === target.readyState) {
+            xhr._lock = false;
+
             const domXml = target.responseXML;
 
             if (null !== domXml) {
