@@ -56,12 +56,12 @@
 .weather *[data-temperature="3"] .temperature,
 .weather *[data-temperature="4"] .temperature,
 .weather *[data-temperature="5"] .temperature,
-.weather *[data-temperature="5"] .temperature,
+.weather *[data-temperature="6"] .temperature,
 .weather *[data-temperature="7"] .temperature,
 .weather *[data-feel_temperature="3"] .feel_temperature,
 .weather *[data-feel_temperature="4"] .feel_temperature,
 .weather *[data-feel_temperature="5"] .feel_temperature,
-.weather *[data-feel_temperature="5"] .feel_temperature,
+.weather *[data-feel_temperature="6"] .feel_temperature,
 .weather *[data-feel_temperature="7"] .feel_temperature {
     color: #66b032
 }
