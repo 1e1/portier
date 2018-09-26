@@ -145,7 +145,7 @@ window.addEventListener('load', ev => {
         }
     }
 
-    window.scrollTo(0, 1);
+    window.scrollTo(0, 0);
     window.setInterval(() => {
         //url.search = new Date().getTime();
         selfReload(url);
