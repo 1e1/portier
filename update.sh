@@ -5,8 +5,8 @@
 INDEX=True
 DAEMON=False
 SLEEP=15
-BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )
-WWW_DIR="$BASE_DIR/www"
+readonly BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )
+readonly WWW_DIR="$BASE_DIR/www"
 INDEX_PATH="$WWW_DIR/index.html"
 DIR_PATH="$WWW_DIR/pages"
 SHM_PATH='/dev/shm'
